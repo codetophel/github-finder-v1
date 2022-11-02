@@ -1,23 +1,20 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Repos from '../repos/Repos';
 import Spinner from '../layout/Spinner';
+import { useContext } from 'react';
+import GithubContext from '../../context/github/githubContext';
 
-export const User = ({ user, repos, getUserRepos, getUser, loading }) => {
+export const User = () => {
+  const githubContext = useContext(GithubContext);
+
+  const { getUser, user, loading, repos, getUserRepos } = githubContext;
+
   useEffect(() => {
     getUser(login);
     getUserRepos(login);
     //eslint-disable-next-line
   }, []);
-
-  User.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired,
-    repos: PropTypes.object.isRequired,
-    getUser: PropTypes.func.isRequired,
-    getUserRepos: PropTypes.func.isRequired,
-  };
 
   const { login } = useParams();
 
