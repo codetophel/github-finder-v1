@@ -4,10 +4,7 @@ import AlertReducer from './alertReducer';
 import { SET_ALERT, REMOVE_ALERT } from '../github/types';
 
 const AlertState = (props) => {
-  const initialState = {
-    alert: null,
-  };
-
+  const initialState = null;
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   const setAlert = (msg, type) => {
